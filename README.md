@@ -71,4 +71,14 @@ The bit in question does not count up like in the old SGE version but counting d
 Resetting it to value DB will revert the timer. 
 
 ## Gettin into the memory
-If you are in the unlucky position not being able to get to the Token screen because your waittime is too long or locked up then you still have a chance by booting up your Virtual machine and make a Snapshot. This is a complete image of your machiens memory located in your virtual machine folder. (VMWARE calls them .vmem) 
+If you are in the unlucky position not being able to get to the Token screen because your waittime is too long or locked up then you still have a slim chance by booting up your Virtual machine and make a Snapshot while you are on waittime. This is a complete image of your machiens memory located in your virtual machine folder. (VMWARE calls them .vmem) 
+In there you find a bit that counts up depending how long your failed attempts.
+
+**Safeguard 1.x - 3.5 example**
+![Failed attempt countup on Safeguard memory](SG1-SGE35-Memory-waittimebit.png)
+
+**Safeguard 4.11 example**
+![Failed attempt countup on Safeguard memory](SGE411-Memory-waittimebit.png.png)
+
+Try to set it back to 00 and hpe for the best after softrebooting the machine. 
+
