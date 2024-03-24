@@ -44,11 +44,14 @@ While all the old Algorathms where sitll available to choose from. SGE 4.x by de
 SGE introduces since version 1.x a waiting time that gets longer each time you fail to provide a correct password on bootup. This time increased by double each time you enter it wrong and will get saved back to the harddisk ultimativley rendering you incapable to reenter a password. But Safeguard has to write this failed attempt to the harddrive wich where we can jump in and revert the timer.
 It is HIGHLY recommend to make a backup of your virtual Harddrive before you  try this!
 
-**Safeguard 1.x -3.x**
-If you use those safeguard versions all you have todo is to open the vhd file in your Hex editor and search for following hex values:
-9EE6C239
-This will most likley put you one line Above the line we want to change. In our case it jumps us to line B54960 (this will differ from your harddrive)
-The first Entry of line B54970 represents the number of failed attempts counting up each time you enter a wrong password.
+## Finding the correct spot
+If you are in the lucky position that safeguard (even after hours) askes you to enter a password then all you have todo is to put in 
+the VHD file in oyur Virtual machine, boot it up and wait. As soon as you are on the spot of where you need to enter the Password make a Snapshot wich provides a memory clone where you can revert back instantly to the Password request.
+
+Make sure you have a backup of your VHD file and enter a wrong password. Then Shutdown the machine and load up the two VHD files in your Hex editor. Make a Diff or Compare action on them and look for differences.
+![Failed attempt countup](Reset Safeguard waiting period (1x 3x)-2.png)
+
+You will come across a single changed like shown here that counts up. 
 It starts at E4 (no failed attempt) and then counts up to E5 E6 E7...FF and so on. So change whatever value there is back to E4 and Save. Now the password token request should pop up immediatley in oyur virtual machine.
 From here on you can use the Snapshot function from VMware to make a memory snapshot you can revert to so you keep preventing this counter to go up again.
 
