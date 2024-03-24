@@ -40,4 +40,18 @@ Alternativley there was also Blowfish, Stealth, XOR  available.
 **Safeguard Easy 4**
 While all the old Algorathms where sitll available to choose from. SGE 4.x by default selected AES 256 as default encryption. So its very likley your Harddrive is encrypted with this.
 
+# Step 1 - Reverting back the Brueforce time
+SGE introduces since version 1.x a waiting time that gets longer each time you fail to provide a correct password on bootup. This time increased by double each time you enter it wrong and will get saved back to the harddisk ultimativley rendering you incapable to reenter a password. But Safeguard has to write this failed attempt to the harddrive wich where we can jump in and revert the timer.
+It is HIGHLY recommend to make a backup of your virtual Harddrive before you  try this!
+
+**Safeguard 1.x -3.x**
+If you use those safeguard versions all you have todo is to open the vhd file in your Hex editor and search for following hex values:
+9EE6C239
+This will most likley put you one line Above the line we want to change. In our case it jumps us to line B54960 (this will differ from your harddrive)
+The first Entry of line B54970 represents the number of failed attempts counting up each time you enter a wrong password.
+It starts at E4 (no failed attempt) and then counts up to E5 E6 E7...FF and so on. So change whatever value there is back to E4 and Save. Now the password token request should pop up immediatley in oyur virtual machine.
+From here on you can use the Snapshot function from VMware to make a memory snapshot you can revert to so you keep preventing this counter to go up again.
+
+
+
 
