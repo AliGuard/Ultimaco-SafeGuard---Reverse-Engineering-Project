@@ -50,15 +50,24 @@ If you are in the lucky position that safeguard (even after hours) askes you to 
 the VHD file in oyur Virtual machine, boot it up and wait. As soon as you are on the spot of where you need to enter the Password make a Snapshot wich provides a memory clone where you can revert back instantly to the Password request.
 
 Make sure you have a backup of your VHD file and enter a wrong password. Then Shutdown the machine and load up the two VHD files in your Hex editor. Make a Diff or Compare action on them and look for differences.
-![Failed attempt countup on Safeguard 1.x](Reset-Safeguard-waiting-period-2.png)
+**Safeguard 1.x example**
+![Failed attempt countup on Safeguard 1.x](Reset-Safeguard-waiting-period-SGE1.png)
 
-![Failed attempt countup on Safeguard 3.5](Reset-Safeguard-waiting-period.png)
+**Safeguard 3.5 example**
+![Failed attempt countup on Safeguard 3.5](Reset-Safeguard-waiting-period-SGE35.png)
 
+**Safeguard 4.11 example**
+![Failed attempt countup on Safeguard 3.5](Reset-Safeguard-waiting-period-SGE411.png)
 
-You will come across a single changed like shown here that counts up. 
-It starts at E4 (no failed attempt) and then counts up to E5 E6 E7...FF and so on. So change whatever value there is back to E4 and Save. Now the password token request should pop up immediatley in oyur virtual machine.
+You will come across a single changed bit like shown here. 
+
+**Safeguard Easy 1.0 - 3.5**
+It starts at E4 (no failed attempt) and then counts up to E5 E6 E7...FF and so on. So change whatever value there is back to E4 and Save. Now the password token request should pop up immediatley in your virtual machine.
 From here on you can use the Snapshot function from VMware to make a memory snapshot you can revert to so you keep preventing this counter to go up again.
 
+**Safeguard Easy 4.11**
+The bit in question Doesn ot count up like in the old SGE version but counting down. It starts at value DB and counts down to DA, D9, D8 and so on.
+Resetting it to value DB will revert the timer. 
 
 
 
