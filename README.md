@@ -6,6 +6,7 @@ it is important to say that i am no Encryption researcher nor have any deep inde
 
 # Software requirements
 In order to follow what i have done and reproduce it i reccomend certain softwares:
+
 [VMWARE Workstation Pro](https://www.vmware.com/products/workstation-pro.html)
 While i own the full version, the trail should be enough already.
 
@@ -49,8 +50,9 @@ If you are in the lucky position that safeguard (even after hours) askes you to 
 the VHD file in oyur Virtual machine, boot it up and wait. As soon as you are on the spot of where you need to enter the Password make a Snapshot wich provides a memory clone where you can revert back instantly to the Password request.
 
 Make sure you have a backup of your VHD file and enter a wrong password. Then Shutdown the machine and load up the two VHD files in your Hex editor. Make a Diff or Compare action on them and look for differences.
-![Failed attempt countup on Safeguard 1.x](Reset Safeguard waiting period-2.png)
-![Failed attempt countup on Safeguard 3.5](Reset Safeguard waiting period.png)
+![Failed attempt countup on Safeguard 1.x](Reset-Safeguard-waiting-period-2.png)
+
+![Failed attempt countup on Safeguard 3.5](Reset-Safeguard-waiting-period.png)
 
 
 You will come across a single changed like shown here that counts up. 
