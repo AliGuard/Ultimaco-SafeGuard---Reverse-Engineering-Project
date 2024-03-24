@@ -115,3 +115,6 @@ While this example shows changes from the left (1111111111111111) to Right (Safe
 I added 4 Examle memory Dumps for you to work on. One with User11:1111111111111111 in encrypted bootup mode and one with After encryption. Then the same machine with the password Changed to "SafeGuard" as well before and after encryption of the userpsace in memory. The Encryption is a DES Encryption with the System password set to 1111111111111111 and the Harddrive encryption password set to 1111111111111111111
 [Link to the files](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/blob/main/ExamplefFiles.7z)
 
+# Obtaining Safeguard and creating a test System
+If you are familiar with archive.org it should be easy for you to aquire a Ultimaco SafeGuard 4.11 installation and setup a simple windows XP or 2000 virtual computer to test this out yourself. ;)  
+
