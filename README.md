@@ -95,7 +95,7 @@ File2.vmem is after the correct password has been entered (1111111111111111) and
 
 ### Password as 32bit hashes?
 ![passwords-stored-in-memory](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/b79de86e-ff71-4027-8397-c6faf8b60791)
-These 2 Entrys represent the User and System password. No matter how long those passwords are they alays be stored in a 32 bit hash. Since the passwords are the same (1111111111111111) you have a repeating pattern here.
+These 2 Entrys represent the SYSTEM and USER password. No matter how long those passwords are (max 16 char) they always be stored in a 32 bit hash. Since the passwords are the same (1111111111111111) you have a repeating pattern here.
 
 ### Usernames
 You can find out the username lenghts by having a look at the pattern of the encryption. There is always a repeating pattern for empty lines and spaces. Encrypted usernames will be the same lenght+2 bits in the memory. 
@@ -104,5 +104,10 @@ As you can see here the user called "User11" uses 2 more bits in the encrypted s
 
 ### Password Lenght
 Even in encrypted userspace the passwords are not stored as plain text in memory as it seems. (this would require realtime disassembly in dosbox-x for you fraks out there)
-BUT you can atleast find out about the used password lenght by lookign at the repeated hex pattern again.
+BUT you can atleast find with luck out about the used password lenght by lookign at the repeated hex pattern again. (This does not work out for all ecryptions)
+For example his one shows a difference in password lenght
+![Example of different password lenghts](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/ed08670a-808e-465b-a6fb-b0993b857b10)
 
+
+While this example shows changes from the left (1111111111111111) to Right (SafeGuard) as password and stil the lenght stays the same. 
+![EncryptedSGE4Memory-passwordchange](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/2ae98fbd-a868-4123-816c-17f33d528891)
