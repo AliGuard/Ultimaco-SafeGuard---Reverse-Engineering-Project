@@ -78,7 +78,31 @@ In there you find a bit that counts up depending how long your failed attempts.
 ![Failed attempt countup on Safeguard memory](SG1-SGE35-Memory-waittimebit.png)
 
 **Safeguard 4.11 example**
-![Failed attempt countup on Safeguard memory](SGE411-Memory-waittimebit.png.png)
+![Failed attempt countup on Safeguard memory](SGE411-Memory-waittimebit.png)
 
 Try to set it back to 00 and hpe for the best after softrebooting the machine. 
+
+# Memory Hacking
+
+## Passwords and Usernames
+Time to understand how Safeguard stores passwords and Usernames of the encrypted Harddrive in memory.
+This is seems to be the same for all SGE Versions 1-4!
+
+Safeguard stores its Password Hashs and Usernames all at the same Place in memory. 
+By that its actually possible to find out the used Username Lenght and Password lenght.
+I provided 2 vmem files in this project. Bootup.vmem is the plain bootup with unencrypted userspace.
+File2.vmem is after the correct password has been entered (1111111111111111) and asking for a new password so the Userspace part is unencrypted.
+
+### Password as 32bit hashes?
+![passwords-stored-in-memory](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/b79de86e-ff71-4027-8397-c6faf8b60791)
+These 2 Entrys represent the User and System password. No matter how long those passwords are they alays be stored in a 32 bit hash. Since the passwords are the same (1111111111111111) you have a repeating pattern here.
+
+### Usernames
+You can find out the username lenghts by having a look at the pattern of the encryption. There is always a repeating pattern for empty lines and spaces. Encrypted usernames will be the same lenght+2 bits in the memory. 
+![Usernamespace-decrypted](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/9a0623cf-e4a4-4115-ab98-8c111b4e7b5b)
+As you can see here the user called "User11" uses 2 more bits in the encrypted space wich seems to be always true as well for the SYSTEM user. That means just by looking at the Hex pattern you can determine where the username starts and ends. Then substract 2 bits in order to get the correct username lenght. In this case 6 Charakters. 
+
+### Password Lenght
+Even in encrypted userspace the passwords are not stored as plain text in memory as it seems. (this would require realtime disassembly in dosbox-x for you fraks out there)
+BUT you can atleast find out about the used password lenght by lookign at the repeated hex pattern again.
 
