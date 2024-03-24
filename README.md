@@ -70,5 +70,5 @@ From here on you can use the Snapshot function from VMware to make a memory snap
 The bit in question does not count up like in the old SGE version but counting down. It starts at value DB and counts down to DA, D9, D8 and so on.
 Resetting it to value DB will revert the timer. 
 
-
-
+## Gettin into the memory
+If you are in the unlucky position not being able to get to the Token screen because your waittime is too long or locked up then you still have a chance by booting up your Virtual machine and make a Snapshot. This is a complete image of your machiens memory located in your virtual machine folder. (VMWARE calls them .vmem) 
