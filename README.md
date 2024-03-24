@@ -51,7 +51,7 @@ the VHD file in oyur Virtual machine, boot it up and wait. As soon as you are on
 
 Make sure you have a backup of your VHD file and enter a wrong password. Then Shutdown the machine and load up the two VHD files in your Hex editor. Make a Diff or Compare action on them and look for differences.
 
-**Safeguard 1.x example**
+**Safeguard 1.x example** (red marked bit)
 ![Failed attempt countup on Safeguard 1.x](Reset-Safeguard-waiting-period-SGE1.png)
 
 **Safeguard 3.5 example**
