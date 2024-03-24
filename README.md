@@ -105,9 +105,13 @@ As you can see here the user called "User11" uses 2 more bits in the encrypted s
 ### Password Lenght
 Even in encrypted userspace the passwords are not stored as plain text in memory as it seems. (this would require realtime disassembly in dosbox-x for you fraks out there)
 BUT you can atleast find with luck out about the used password lenght by lookign at the repeated hex pattern again. (This does not work out for all ecryptions)
-For example his one shows a difference in password lenght
+For example his one shows a difference in password lenght. Keep in mind there are charakters infront and after the password that needs to be sustracted from your count. (this is where i hit the wall)
 ![Example of different password lenghts](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/ed08670a-808e-465b-a6fb-b0993b857b10)
 
 
 While this example shows changes from the left (1111111111111111) to Right (SafeGuard) as password and stil the lenght stays the same. 
 ![EncryptedSGE4Memory-passwordchange](https://github.com/AliGuard/Ultimaco-SafeGuard---Reverse-Engineering-Project/assets/164739879/2ae98fbd-a868-4123-816c-17f33d528891)
+
+# Example Files
+I added 4 Examle memory Dumps for you to work on. One with User11:1111111111111111 in encrypted bootup mode and one with After encryption. Then the same machine with the password Changed to "SafeGuard" as well before and after encryption of the userpsace in memory.
+
